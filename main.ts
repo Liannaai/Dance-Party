@@ -21,12 +21,16 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setPosition(100, 100)
 })
 info.onLifeZero(function () {
-    game.splash("Oops...", "To0 bad")
-    game.over(false, effects.splatter)
+    game.splash("Oops...")
+    game.splash("To bad")
+    game.splash("Try to get more hearts next time...")
+    game.splash("See you again next time")
+    game.over(false, effects.melt)
 })
 scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
     sprite.destroy()
     info.changeLifeBy(-1)
+    info.changeScoreBy(-2)
     mySprite.say("Ouch...", 1000)
 })
 let right: Sprite = null
